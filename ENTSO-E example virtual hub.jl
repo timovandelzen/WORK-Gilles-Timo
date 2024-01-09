@@ -14,12 +14,24 @@ B_sell = CSV.read(joinpath(home_dir,"Input","ZoneB_SELL.csv"),delim=";",DataFram
 C_buy = CSV.read(joinpath(home_dir,"Input","ZoneC_BUY.csv"),delim=";",DataFrame)
 C_sell = CSV.read(joinpath(home_dir,"Input","ZoneC_SELL.csv"),delim=";",DataFrame)
 
+BUY_A = A_buy[:,1]
+BUY_PRICE_A = A_buy[:,2]
+BUY_B = B_buy[:,1]
+BUY_PRICE_B = B_buy[:,2]
+BUY_C = C_buy[:,1]
+BUY_PRICE_C = C_buy[:,2]
+
+SELL_A = A_sell[:,1]
+SELL_PRICE_A = A_sell[:,2]
+SELL_B = B_sell[:,1]
+SELL_PRICE_B = B_sell[:,2]
+SELL_C = C_sell[:,1]
+SELL_PRICE_C = C_sell[:,2]
+
+
 matched_orders_A = DataFrame(BUY_PRICE_A = Int[], BUY_A = Int[], SELL_PRICE_A = Int[], SELL_A = Int[])
 
 F = [120,100,50]
-
-n_doublet = 3;
-n_triplet = 6;
 
 model = Model(HiGHS.Optimizer)
 
